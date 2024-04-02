@@ -1,88 +1,23 @@
-# to-do-list
-import json
-import os
+## 📝 To-Do List: Stay Organized, Get Things Done!
+Welcome to the To-Do List application – your ultimate tool for managing tasks efficiently and boosting productivity! Whether you're a busy professional, a diligent student, or just someone looking to stay organized, this application has got you covered.
 
-TASK_FILE = "tasks.json"
+### Features:
+🚀 Task Management: Add, remove, and mark tasks as completed effortlessly.
 
-def load_tasks():
-    if os.path.exists(TASK_FILE):
-        with open(TASK_FILE, "r") as file:
-            return json.load(file)
-    else:
-        return {"tasks": []}
+🌟 Priority Settings: Assign priorities (high, medium, low) to tasks for better organization and focus.
 
-def save_tasks(tasks):
-    with open(TASK_FILE, "w") as file:
-        json.dump(tasks, file, indent=4)
+⏰ Due Dates: Set due dates for tasks to stay on top of deadlines and commitments.
 
-def add_task(tasks, description, priority="medium", due_date=""):
-    tasks["tasks"].append({
-        "description": description,
-        "priority": priority,
-        "due_date": due_date,
-        "completed": False
-    })
-    save_tasks(tasks)
+📋 List View: View all your tasks in a clean and intuitive list format, complete with details like priority and due dates.
 
-def remove_task(tasks, index):
-    if 0 <= index < len(tasks["tasks"]):
-        del tasks["tasks"][index]
-        save_tasks(tasks)
-    else:
-        print("Invalid task index!")
+💾 Data Persistence: Your tasks are automatically saved in a CSV file, ensuring that you never lose track of your progress.
 
-def complete_task(tasks, index):
-    if 0 <= index < len(tasks["tasks"]):
-        tasks["tasks"][index]["completed"] = True
-        save_tasks(tasks)
-    else:
-        print("Invalid task index!")
-
-def display_tasks(tasks):
-    print("\nTasks:")
-    for index, task in enumerate(tasks["tasks"], start=1):
-        status = "✓" if task["completed"] else " "
-        print(f"{index}. [{status}] {task['description']} - Priority: {task['priority']}, Due Date: {task['due_date']}")
-
-def main():
-    # Load existing tasks or initialize an empty list
-    tasks = load_tasks()
-
-    while True:
-        print("\nMenu:")
-        print("1. Add Task")
-        print("2. Remove Task")
-        print("3. Complete Task")
-        print("4. View Tasks")
-        print("5. Exit")
-
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-            description = input("Enter task description: ")
-            priority = input("Enter task priority (high/medium/low): ")
-            due_date = input("Enter due date (optional): ")
-            add_task(tasks, description, priority, due_date)
-
-        elif choice == "2":
-            display_tasks(tasks)
-            index = int(input("Enter the index of the task to remove: ")) - 1
-            remove_task(tasks, index)
-
-        elif choice == "3":
-            display_tasks(tasks)
-            index = int(input("Enter the index of the task to complete: ")) - 1
-            complete_task(tasks, index)
-
-        elif choice == "4":
-            display_tasks(tasks)
-
-        elif choice == "5":
-            print("Exiting...")
-            break
-
-        else:
-            print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
+### Getting Started:
+Clone the Repository: git clone https://github.com/your-username/todo-list.git
+Navigate to the Project Directory: cd todo-list
+Run the Application: python todo_list.py
+How to Use:
+Add a New Task: Choose option 1 and follow the prompts to add a new task.
+Remove a Task: Choose option 2 and enter the task ID to remove it from the list.
+Mark a Task as Completed: Choose option 3 and enter the task ID to mark it as completed.
+View All Tasks: Choose option 4 to see all tasks in the list.
