@@ -13,7 +13,7 @@ Welcome to the To-Do List application – your ultimate tool for managing tasks 
 💾 Data Persistence: Your tasks are automatically saved in a CSV file, ensuring that you never lose track of your progress.
 
 ### Getting Started:
-Clone the Repository: git clone https://github.com/your-username/todo-list.git
+Clone the Repository: git clone hthttps://github.com/suraj45-max/to-do-list
 Navigate to the Project Directory: cd todo-list
 Run the Application: python todo_list.py
 How to Use:
